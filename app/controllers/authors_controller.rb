@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?
 
   # GET /authors
   def index
@@ -47,6 +48,10 @@ class AuthorsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def logged_in?
+      redirect_to session_new_path unless session[:user_id]
+    end
+
     def set_author
       @author = Author.find(params[:id])
     end

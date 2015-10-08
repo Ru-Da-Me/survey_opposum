@@ -8,12 +8,12 @@ class SessionControllerTest < ActionController::TestCase
 
   test "should get create" do
     get :create
-    assert_response :success
+    assert_redirected_to session_new_path
   end
 
   test "should get destroy" do
     get :destroy
-    assert_response :success
+    assert_redirected_to session_new_path
   end
 
 end

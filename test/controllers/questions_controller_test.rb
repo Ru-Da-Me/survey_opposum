@@ -3,6 +3,7 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
   setup do
     @question = questions(:one)
+    session[:user_id] = authors(:one).id
   end
 
   test "should get index" do
@@ -10,7 +11,7 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:questions)
   end
-
+  
   test "should get new" do
     get :new
     assert_response :success

@@ -10,11 +10,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :author_id %><br>
-    <%= f.number_field :author_id %>
-  </div>
+  <%# if params(:author_id) %>
+    <%#= f.hidden_field :author_id %>
+  <%# else %>
+    <div class="field">
+      <%= f.label :author_id %><br>
+      <%= f.number_field :author_id %>
+    </div>
+  <%# end %>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -27,6 +30,34 @@
     <%= f.label :published %><br>
     <%= f.check_box :published %>
   </div>
+
+  <%= f.fields_for :questions do |ff| %>
+    <div class="field">
+      <%= ff.label :survey_id %><br>
+      <%= ff.number_field :survey_id %>
+    </div>
+    <div class="field">
+      <%= ff.label :required %><br>
+      <%= ff.check_box :required %>
+    </div>
+    <div class="field">
+      <%= ff.label :question_type %><br>
+      <%= ff.text_field :question_type %>
+    </div>
+    <div class="field">
+      <%= ff.label :text %><br>
+      <%= ff.text_field :text %>
+    </div>
+    <div class="field">
+      <%= ff.label :description %><br>
+      <%= ff.text_field :description %>
+    </div>
+    <div class="field">
+      <%= ff.label :_destroy %><br>
+      <%= ff.check_box :_destroy %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

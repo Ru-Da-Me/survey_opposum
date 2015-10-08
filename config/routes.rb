@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'session/new'
+
+  post 'session/create'
+
+  delete 'session/destroy'
+
   root 'authors#new'
 
   resources :questions

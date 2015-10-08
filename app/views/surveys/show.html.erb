@@ -20,5 +20,13 @@
   <%= @survey.published %>
 </p>
 
+<h2> Questions </h2>
+<%= @survey.questions.each do |q| %>
+  <p>Question Type: <%= q.question_type %></p>
+  <p>Text: <%= q.text %></p>
+  <p>Description: <%= q.description %></p>
+  <p>Required? <%= q.required %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>

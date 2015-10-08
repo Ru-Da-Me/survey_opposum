@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  root 'authors#new'
+
   get 'session/new'
 
   post 'session/create'
 
   delete 'session/destroy'
 
-  root 'authors#new'
 
   resources :questions
   resources :surveys

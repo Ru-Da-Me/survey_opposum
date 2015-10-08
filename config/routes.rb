@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'authors#new'
+
   resources :questions
   resources :surveys
   resources :authors

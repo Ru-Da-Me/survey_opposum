@@ -33,10 +33,6 @@
 
   <%= f.fields_for :questions do |ff| %>
     <div class="field">
-      <%= ff.label :survey_id %><br>
-      <%= ff.number_field :survey_id %>
-    </div>
-    <div class="field">
       <%= ff.label :required %><br>
       <%= ff.check_box :required %>
     </div>

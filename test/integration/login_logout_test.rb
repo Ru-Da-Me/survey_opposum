@@ -18,4 +18,10 @@ class LoginLogoutTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template "index"
   end
+
+  # test "can create survey" do
+  #   post session_create_path, {email: "ruti@mail.com", password: "iamruti"}
+  #   get new_survey_path
+  #   post surveys_path, method: :post, {title: "First Survey", description: "I am the first survey."}
+  # end
 end

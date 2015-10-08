@@ -2,7 +2,7 @@
 
 one:
   author_id: 1
-  title: MyString
+  title: First Survey
   description: MyText
   published: false
 

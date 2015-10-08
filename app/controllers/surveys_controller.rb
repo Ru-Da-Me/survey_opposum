@@ -13,7 +13,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
-    @survey = Survey.new(author_id: params[:author_id])
+    @survey = Survey.new(author_id: session[:user_id])
     @survey.questions.build
   end
 

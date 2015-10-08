@@ -10,14 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <%# if params(:author_id) %>
-    <%#= f.hidden_field :author_id %>
-  <%# else %>
-    <div class="field">
-      <%= f.label :author_id %><br>
-      <%= f.number_field :author_id %>
-    </div>
-  <%# end %>
+  <%= f.hidden_field :author_id %>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

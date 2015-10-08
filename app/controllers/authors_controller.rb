@@ -48,9 +48,6 @@ class AuthorsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def logged_in?
-      redirect_to session_new_path unless session[:user_id]
-    end
 
     def set_author
       @author = Author.find(params[:id])

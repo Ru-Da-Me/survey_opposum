@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <p>Title: <%= @survey.title %></p>
+  <p>Title: <%= @submission.survey.title %></p>
   <%= f.hidden_field :survey_id %>
-  <%= @survey.questions.each do |q| %>
+  <%= @submission.survey.questions.each do |q| %>
     <p>question type: <%= q.question_type %></p>
     <p>text: <%= q.text %></p>
     <p>description: <%= q.description %></p>
@@ -21,8 +21,8 @@
 
     <% if q.question_type == "Yes/No"%>
       <div class="field">
-        <br><%= radio_button_tag 'Yes', 'No', true %> Yes
-        <br><%= radio_button_tag 'Yes', 'No', true %> No
+        <br><%= radio_button_tag "answer_text[#{q.id}]", "Yes" %> Yes
+        <br><%= radio_button_tag "answer_text[#{q.id}]", "No" %> No
       </div>
     <%elsif q.question_type == "Short"%>
       <div class="field">
@@ -34,6 +34,8 @@
         <%= label_tag "answer_text[#{q.id}]" %><br>
         <%= text_area_tag "answer_text[#{q.id}]" %>
       </div>
+
+
     <% end %>
   <%end%>
   <div class="actions">

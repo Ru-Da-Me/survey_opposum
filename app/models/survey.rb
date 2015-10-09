@@ -10,10 +10,10 @@ class Survey < ActiveRecord::Base
       allow_destroy: true
 
 
-      def publish_with_question
-       if questions.blank?
-         errors.add(:published, "Survey cannot be published without at least one question")
-       end
-     end
+  def publish_with_question
+    if published && questions.blank?
+      errors.add(:published, "Survey cannot be published without at least one question")
+    end
+  end
 
 end

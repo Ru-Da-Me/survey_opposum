@@ -12,7 +12,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @submission = Submission.new
+    @submission = Submission.new(survey_id: params[:survey_id])
     @survey = Survey.find(params[:survey_id])
   end
 

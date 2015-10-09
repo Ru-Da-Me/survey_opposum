@@ -20,6 +20,8 @@
   <%= @survey.published %>
 </p>
 
+<%#= new_submission_url(/@survey) %>
+
 <h2> Questions </h2>
 <%= @survey.questions.each do |q| %>
   <p>Question Type: <%= q.question_type %></p>

@@ -48,6 +48,7 @@ class SurveysController < ApplicationController
     redirect_to surveys_url, notice: 'Survey was successfully destroyed.'
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_survey

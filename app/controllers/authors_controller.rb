@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?, except: [:new]
+  before_action :logged_in?, except: [:new, :edit]
 
   # GET /authors
   def index

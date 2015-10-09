@@ -1,0 +1,30 @@
+<%= form_for(@submission) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>Title: <%= @survey.title %></p>
+  <%= f.hidden_field :survey_id %>
+  <%= @survey.questions.each do |q| %>
+    <p>question type: <%= q.question_type %></p>
+    <p>text: <%= q.text %></p>
+    <p>description: <%= q.description %></p>
+    <p>required: <%= q.required %></p>
+    <div class="field">
+      <%= label_tag "answer_text[#{q.id}]" %><br>
+      <%= text_field_tag "answer_text[#{q.id}]" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

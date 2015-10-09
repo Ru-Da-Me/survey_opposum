@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+a = Author.create!(name:"Ruti", email:"ruti@mail.com", password: "password")
+
+s = Survey.create!(title: "First Survey", description: "the first")

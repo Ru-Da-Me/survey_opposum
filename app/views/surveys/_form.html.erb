@@ -31,7 +31,7 @@
     </div>
     <div class="field">
       <%= ff.label :question_type %><br>
-      <%= ff.select :question_type, options_for_select([["Yes/No"], ["Short"], ["Long"]]) %>
+      <%= ff.select :question_type, options_for_select([[""], ["Yes/No"], ["Short"], ["Long"]], ff.object.question_type) %>
     </div>
     <div class="field">
       <%= ff.label :text %><br>

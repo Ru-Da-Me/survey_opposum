@@ -9,10 +9,10 @@ class Survey < ActiveRecord::Base
       reject_if: proc { |attributes| attributes['text'].blank? },
       allow_destroy: true
 
-      def publish_with_question
+    def publish_with_question
        if published && questions.blank?
          errors.add(:published, "Survey cannot be published without at least one question")
        end
-     end
+    end
 
 end

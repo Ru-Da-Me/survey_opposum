@@ -18,12 +18,24 @@
     <p>text: <%= q.text %></p>
     <p>description: <%= q.description %></p>
     <p>required: <%= q.required %></p>
-    <div class="field">
-      <%= label_tag "answer_text[#{q.id}]" %><br>
-      <%= text_field_tag "answer_text[#{q.id}]" %>
-    </div>
-  <% end %>
 
+    <% if q.question_type == "Yes/No"%>
+      <div class="field">
+    <br><%= radio_button_tag 'Yes', 'No', true %> Yes
+    <br><%= radio_button_tag 'Yes', 'No', true %> No
+      </div>
+    <%elsif q.question_type == "Short"%>
+      <div class="field">
+        <%= label_tag "answer_text[#{q.id}]" %><br>
+        <%= text_field_tag "answer_text[#{q.id}]" %>
+      </div>
+    <%else q.question_type == "Long"%>
+      <div class="field">
+        <%= label_tag "answer_text[#{q.id}]" %><br>
+        <%= text_area_tag "answer_text[#{q.id}]" %>
+      </div>
+    <% end %>
+  <%end%>
   <div class="actions">
     <%= f.submit %>
   </div>

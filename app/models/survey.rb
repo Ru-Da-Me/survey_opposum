@@ -11,7 +11,7 @@ class Survey < ActiveRecord::Base
 
 
       def publish_with_question
-       if published == true && questions.count == 0
+       if questions.blank?
          errors.add(:published, "Survey cannot be published without at least one question")
        end
      end

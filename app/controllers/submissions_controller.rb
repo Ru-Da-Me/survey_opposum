@@ -16,10 +16,6 @@ class SubmissionsController < ApplicationController
     @survey = Survey.find(params[:survey_id])
   end
 
-  # GET /submissions/1/edit
-  def edit
-  end
-
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)

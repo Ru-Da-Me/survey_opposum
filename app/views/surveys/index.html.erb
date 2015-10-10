@@ -2,12 +2,11 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1>Listing Surveys</h1>
+  <h1>My Surveys</h1>
 
   <table>
     <thead>
       <tr>
-        <th>Author</th>
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
@@ -18,7 +17,6 @@
     <tbody>
       <% @surveys.each do |survey| %>
         <tr>
-          <td><%= survey.author_id %></td>
           <td><%= survey.title %></td>
           <td><%= survey.description %></td>
           <td><%= survey.published %></td>

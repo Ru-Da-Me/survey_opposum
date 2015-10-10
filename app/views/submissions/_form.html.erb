@@ -13,35 +13,38 @@
       </div>
     <% end %>
 
-    <p>Title: <%= @submission.survey.title %></p>
+    <h3><%= @submission.survey.title %></h3>
+    <h3><%= @submission.survey.description %></h3>
     <%= f.hidden_field :survey_id %>
 
-    <%= @submission.survey.questions.each do |q| %>
-      <p>question type: <%= q.question_type %></p>
-      <p>text: <%= q.text %></p>
-      <p>description: <%= q.description %></p>
-      <p>required: <%= q.required %></p>
-
-      <% if q.question_type == "Yes/No"%>
-        <div class="field">
-          <br><%= radio_button_tag "answer_text[#{q.id}]", "Yes" %> Yes
-          <br><%= radio_button_tag "answer_text[#{q.id}]", "No" %> No
-        </div>
-      <%elsif q.question_type == "Short"%>
-        <div class="field">
-          <%= label_tag "answer_text[#{q.id}]" %><br>
-          <%= text_field_tag "answer_text[#{q.id}]" %>
-        </div>
-      <%else q.question_type == "Long"%>
-        <div class="field">
-          <%= label_tag "answer_text[#{q.id}]" %><br>
-          <%= text_area_tag "answer_text[#{q.id}]" %>
-        </div>
-
-      <% end %>
+    <% @submission.survey.questions.each do |q| %>
+          <h2><%= "Question" %>
+          <h3><%= q.text%></h3>
+          <h4><%= q.description %></h4>
+          <% if q.required %>
+            <p><%= "required" %></p>
+          <% else %>
+            <p><%= "optional" %></p>
+          <% end %>
+        <% if q.question_type == "Yes/No"%>
+          <div class="field">
+            <br><%= radio_button_tag "Answer[#{q.id}]", "Yes" %> Yes
+            <br><%= radio_button_tag "Answer[#{q.id}]", "No" %> No
+          </div>
+        <%elsif q.question_type == "Short"%>
+          <div class="field">
+            <%= label_tag "Answer" %><br>
+            <%= text_field_tag "Answer" %>
+          </div>
+        <%else q.question_type == "Long"%>
+          <div class="field">
+            <%= label_tag "Answer" %><br>
+            <%= text_area_tag "Answer" %>
+          </div>
+        <% end %>
     <%end%>
     <div class="actions">
-      <%= f.submit %>
+      <button type="button" class="btn btn-success">Submit</button>
     </div>
   <% end %>
 </div>

@@ -3,7 +3,8 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions
   def index
-    @submissions = Submission.all
+    @submissions = Submission.where(survey_id: params[:survey_id])
+    @survey = Survey.find(params[:survey_id])
   end
 
   # GET /submissions/1

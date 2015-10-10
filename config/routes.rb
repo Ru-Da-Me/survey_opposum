@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :submissions
   resources :answers
-
   root 'authors#new'
 
   get 'session/new'

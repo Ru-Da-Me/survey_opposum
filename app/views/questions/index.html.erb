@@ -1,35 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Questions</h1>
+  <h1>Listing Questions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Survey</th>
-      <th>Required</th>
-      <th>Question type</th>
-      <th>Text</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= question.survey_id %></td>
-        <td><%= question.required %></td>
-        <td><%= question.question_type %></td>
-        <td><%= question.text %></td>
-        <td><%= question.description %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Survey</th>
+        <th>Required</th>
+        <th>Question type</th>
+        <th>Text</th>
+        <th>Description</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.survey_id %></td>
+          <td><%= question.required %></td>
+          <td><%= question.question_type %></td>
+          <td><%= question.text %></td>
+          <td><%= question.description %></td>
+          <td><%= link_to 'Show', question %></td>
+          <td><%= link_to 'Edit', edit_question_path(question) %></td>
+          <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Question', new_question_path %>
+  <br>
+
+  <%= link_to 'New Question', new_question_path %>
+</div>

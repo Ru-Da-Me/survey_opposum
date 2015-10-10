@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?
+  before_action :can_edit, only: [:edit]
 
   # GET /surveys
   def index
@@ -51,6 +52,11 @@ class SurveysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    private def can_edit
+      redirect_to surveys_path, notice: 'Survey cannot be edited once it has submissions.' unless @survey.submissions.count == 0
+    end
+
     def set_survey
       @survey = Survey.find(params[:id])
     end

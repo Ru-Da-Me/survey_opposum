@@ -6,17 +6,16 @@ class Submission < ActiveRecord::Base
   validates :survey_id, presence: true
 
   def submit_require
-
     survey.questions.each do |q|
       if q.required
         if q.answers.count > 0
           q.answers.each do |a|
             if a.answer_text.blank?
-              errors.add(:required, "blah blah")
+              errors.add(:required, "ERROR: triggered by blank answer text")
             end
           end
-        else
-          errors.add(:required, "blah blah")
+        # else
+        #   errors.add(:required, "ERROR: triggered by question answers not being > 0")
         end
       end
     end
@@ -38,7 +37,7 @@ class Submission < ActiveRecord::Base
   #       errors.add(:required, "Survey cannot be submitted without responding to #{question.text}.")
   #     end
   #   end
-  
+
   # validate :publish_with_require
   #
   # def publish_with_require

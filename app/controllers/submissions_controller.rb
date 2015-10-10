@@ -20,7 +20,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
-    @answer = Answer.new
+    #@answer = Answer.new(for every question in the submission form with all answer params )
 
     if @submission.save
       redirect_to @submission, notice: 'Submission was successfully created.'
@@ -52,6 +52,7 @@ class SubmissionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def submission_params
-      params.require(:submission).permit(:survey_id)
+      params.require(:submission).permit(:survey_id,
+      answers_attributes:[:question_id, :submission_id, :answer_text])
     end
 end

@@ -20,7 +20,6 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
-    #@answer = Answer.new(for every question in the submission form with all answer params )
 
     if @submission.save
       redirect_to @submission, notice: 'Submission was successfully created.'

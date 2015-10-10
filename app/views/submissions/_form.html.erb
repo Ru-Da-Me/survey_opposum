@@ -13,6 +13,7 @@
 
   <p>Title: <%= @submission.survey.title %></p>
   <%= f.hidden_field :survey_id %>
+
   <%= @submission.survey.questions.each do |q| %>
     <p>question type: <%= q.question_type %></p>
     <p>text: <%= q.text %></p>
@@ -34,7 +35,6 @@
         <%= label_tag "answer_text[#{q.id}]" %><br>
         <%= text_area_tag "answer_text[#{q.id}]" %>
       </div>
-
 
     <% end %>
   <%end%>

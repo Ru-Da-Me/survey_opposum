@@ -20,7 +20,22 @@ class Submission < ActiveRecord::Base
   #       end
   #     end
   #   end
-  
+
+  def submit_require
+    survey.questions.each do |q|
+      if q.required
+        if q.answers.count > 0
+          q.answers.each do |a|
+            if a.answer_text.blank?
+              errors.add(:required, "ERROR: triggered by blank answer text")
+            end
+          end
+        # else
+        #   errors.add(:required, "ERROR: triggered by question answers not being > 0")
+        end
+      end
+    end
+  end
 
     # survey.questions.each do |q|
     #   if q.required

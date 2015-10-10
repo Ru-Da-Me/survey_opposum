@@ -20,7 +20,17 @@
   <%= @survey.published %>
 </p>
 
-<%= new_submission_url(/\W?survey_id=#{@survey.id}/) %>
+<%#= new_submission_url(/\W?survey_id=#{@survey.id}/) %>
+
+<%#= new_submission_url(params.merge(:new => "submissions[#{@survey.id}]")) %>
+
+<%#= link_to 'My Survey' root_url new_submission_path(survey.id) %>
+
+<%#= root_url %><%#= new_submission_path(@survey.id) %>
+
+<%#= link_to 'My Surveys', new_submission_path, :new=> "submission#{@survey.id}"%>
+
+<%= link_to 'My Survey', new_submission_url(params.merge(:new => "submission.survey_id#{@survey.id}")) %>
 
 
 <h2> Questions </h2>

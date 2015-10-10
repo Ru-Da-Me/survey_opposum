@@ -7,7 +7,11 @@
 
       <% @surveys.each do |survey| %>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
+            <h3>Survey ID</h3>
+            <p><%= survey.id %></p>
+          </div>
+          <div class="col-md-2">
             <h3>Survey Title</h3>
             <p><%= survey.title %></p>
           </div>
@@ -15,7 +19,7 @@
             <h3>Survey Description</h3>
             <p><%= survey.description %></p>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <h3>Published</h3>
             <p><%= survey.published %></p>
           </div>

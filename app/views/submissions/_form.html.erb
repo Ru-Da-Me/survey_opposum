@@ -28,18 +28,18 @@
           <% end %>
         <% if q.question_type == "Yes/No"%>
           <div class="field">
-            <br><%= radio_button_tag "Answer[#{q.id}]", "Yes" %> Yes
-            <br><%= radio_button_tag "Answer[#{q.id}]", "No" %> No
+            <br><%= radio_button_tag "Answer", "Yes" %> Yes
+            <br><%= radio_button_tag "answer_text[#{q.id}]", "No" %> No
           </div>
         <%elsif q.question_type == "Short"%>
           <div class="field">
             <%= label_tag "Answer" %><br>
-            <%= text_field_tag "Answer" %>
+            <%= text_field_tag "answer_text[#{q.id}]" %>
           </div>
         <%else q.question_type == "Long"%>
           <div class="field">
             <%= label_tag "Answer" %><br>
-            <%= text_area_tag "Answer" %>
+            <%= text_area_tag "answer_text[#{q.id}]" %>
           </div>
         <% end %>
     <%end%>

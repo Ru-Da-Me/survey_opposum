@@ -1,44 +1,47 @@
-<%= form_for(@submission) do |f| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+<div class="container">
 
-      <ul>
-      <% @submission.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <%= form_for(@submission) do |f| %>
+    <% if @submission.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+        <ul>
+        <% @submission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>Title: <%= @submission.survey.title %></p>
+    <%= f.hidden_field :survey_id %>
+
+    <%= @submission.survey.questions.each do |q| %>
+      <p>question type: <%= q.question_type %></p>
+      <p>text: <%= q.text %></p>
+      <p>description: <%= q.description %></p>
+      <p>required: <%= q.required %></p>
+
+      <% if q.question_type == "Yes/No"%>
+        <div class="field">
+          <br><%= radio_button_tag "answer_text[#{q.id}]", "Yes" %> Yes
+          <br><%= radio_button_tag "answer_text[#{q.id}]", "No" %> No
+        </div>
+      <%elsif q.question_type == "Short"%>
+        <div class="field">
+          <%= label_tag "answer_text[#{q.id}]" %><br>
+          <%= text_field_tag "answer_text[#{q.id}]" %>
+        </div>
+      <%else q.question_type == "Long"%>
+        <div class="field">
+          <%= label_tag "answer_text[#{q.id}]" %><br>
+          <%= text_area_tag "answer_text[#{q.id}]" %>
+        </div>
+
       <% end %>
-      </ul>
+    <%end%>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <p>Title: <%= @submission.survey.title %></p>
-  <%= f.hidden_field :survey_id %>
-
-  <%= @submission.survey.questions.each do |q| %>
-    <p>question type: <%= q.question_type %></p>
-    <p>text: <%= q.text %></p>
-    <p>description: <%= q.description %></p>
-    <p>required: <%= q.required %></p>
-
-    <% if q.question_type == "Yes/No"%>
-      <div class="field">
-        <br><%= radio_button_tag "answer_text[#{q.id}]", "Yes" %> Yes
-        <br><%= radio_button_tag "answer_text[#{q.id}]", "No" %> No
-      </div>
-    <%elsif q.question_type == "Short"%>
-      <div class="field">
-        <%= label_tag "answer_text[#{q.id}]" %><br>
-        <%= text_field_tag "answer_text[#{q.id}]" %>
-      </div>
-    <%else q.question_type == "Long"%>
-      <div class="field">
-        <%= label_tag "answer_text[#{q.id}]" %><br>
-        <%= text_area_tag "answer_text[#{q.id}]" %>
-      </div>
-
-    <% end %>
-  <%end%>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

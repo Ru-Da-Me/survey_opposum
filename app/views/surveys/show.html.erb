@@ -2,37 +2,49 @@
 
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Author:</strong>
-    <%= @survey.author_id %>
-  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Survey Title</h3>
+      <p><%= @survey.title %></p>
+    </div>
+    <div class="col-md-3">
+      <h3>Survey Description</h3>
+      <p><%= @survey.description %></p>
+    </div>
+    <div class="col-md-3">
+      <h3>Published</h3>
+      <p><%= @survey.published %></p>
+    </div>
+    <div class="col-md-3">
+      <h3>Actions</h3>
+      <p><%= link_to 'Edit', edit_survey_path(@survey) %></p>
+      <p><%= link_to 'Destroy', @survey, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Title:</strong>
-    <%= @survey.title %>
-  </p>
+  <h3>URL to send out</h3>
+  <p><%= new_submission_url(/\W?survey_id=#{@survey.id}/) %></p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @survey.description %>
-  </p>
+  <% @survey.questions.each do |q| %>
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Question Type</h3>
+        <p><%= q.question_type %></p>
+      </div>
+      <div class="col-md-3">
+        <h3>Question Text:</h3>
+        <p><%= q.text %></p>
+      </div>
+      <div class="col-md-3">
+        <h3>Question Description:</h3>
+        <p><%= q.description %></p>
+      </div>
+      <div class="col-md-3">
+        <h3>Required? </h3>
+        <p><%= q.required %></p>
+      </div>
+    </div>
+  <% end %>
 
-  <p>
-    <strong>Published:</strong>
-    <%= @survey.published %>
-  </p>
-
-  <%= new_submission_url(/\W?survey_id=#{@survey.id}/) %>
-
-
-  <h2> Questions </h2>
-    <%= @survey.questions.each do |q| %>
-      <p>Question Type: <%= q.question_type %></p>
-      <p>Text: <%= q.text %></p>
-      <p>Description: <%= q.description %></p>
-      <p>Required? <%= q.required %></p>
-    <% end %>
-
-  <%= link_to 'Edit', edit_survey_path(@survey) %> |
   <%= link_to 'Back', surveys_path %>
 </div>

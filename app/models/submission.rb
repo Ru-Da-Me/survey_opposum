@@ -2,25 +2,25 @@ class Submission < ActiveRecord::Base
   belongs_to :survey
   has_many :answers
   has_many :questions, through: :answers
-  validate :submit_require
+  # validate :submit_require
   validates :survey_id, presence: true
 
-  def submit_require
-
-    survey.questions.each do |q|
-      if q.required
-        if q.answers.count > 0
-          q.answers.each do |a|
-            if a.answer_text.blank?
-              errors.add(:required, "blah blah")
-            end
-          end
-        else
-          errors.add(:required, "blah blah")
-        end
-      end
-    end
-  end
+  # def submit_require
+  #
+  #   survey.questions.each do |q|
+  #     if q.required
+  #       if q.answers.count > 0
+  #         q.answers.each do |a|
+  #           if a.answer_text.blank?
+  #             errors.add(:required, "blah blah")
+  #           end
+  #         end
+  #       else
+  #         errors.add(:required, "blah blah")
+  #       end
+  #     end
+  #   end
+  
 
     # survey.questions.each do |q|
     #   if q.required
@@ -38,7 +38,7 @@ class Submission < ActiveRecord::Base
   #       errors.add(:required, "Survey cannot be submitted without responding to #{question.text}.")
   #     end
   #   end
-  
+
   # validate :publish_with_require
   #
   # def publish_with_require

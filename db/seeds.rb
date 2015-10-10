@@ -13,7 +13,7 @@ a2 = Author.create!(name:"Da-Me", email:"dame@mail.com", password: "password")
 
 s1 = Survey.create!(title: "First Survey", description: "the first", author_id: 1)
 s2 = Survey.create!(title: "First Survey", description: "the first", author_id: 2)
-
+s3 = Survey.create!(title: "First Survey", description: "the first", author_id: 3)
 
 q1 = Question.create(required: true, question_type: "Short", text: "This is a short question.", description: "This is a short description")
 q2 = Question.create(required: false, question_type: "Long", text: "This is a long question.", description: "This is a long description")

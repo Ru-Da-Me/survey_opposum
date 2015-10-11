@@ -16,11 +16,12 @@
     <%= f.fields_for(:answers) do |ff| %>
        <% q = ff.object.question %>
        <%= ff.hidden_field :question_id, value: q.id %>
-       <%= q.text %>
+       <h3><%= q.text %></h3>
+       <p><%= q.description %></p>
        <% if q.required == true %>
-         <div> (Required) </div>
+         <div> <p>(Required)</p> </div>
        <% else %>
-         <div> (Optional) </div>
+         <div> <p>(Optional)</p> </div>
        <% end %>
        <% if q.question_type == "Yes/No" %>
          <div class="field">
@@ -42,6 +43,6 @@
        <% end %>
      <% end %>
      <div class="actions">
-       <%= f.submit "Submit Survey", class: "submit-button" %>
+       <%= f.submit "Submit Survey"%>
      </div>
    <% end %>

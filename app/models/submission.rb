@@ -4,7 +4,7 @@ class Submission < ActiveRecord::Base
   has_many :questions, through: :answers
   # validate :submit_require
   validates :survey_id, presence: true
-  accepts_nested_attributes_for :answers, reject_if: :all_blank
+  accepts_nested_attributes_for :answers
 
   # def submit_require
   #
@@ -22,21 +22,21 @@ class Submission < ActiveRecord::Base
   #     end
   #   end
 
-  def submit_require
-    survey.questions.each do |q|
-      if q.required
-        if q.answers.count > 0
-          q.answers.each do |a|
-            if a.answer_text.blank?
-              errors.add(:required, "ERROR: triggered by blank answer text")
-            end
-          end
-        # else
-        #   errors.add(:required, "ERROR: triggered by question answers not being > 0")
-        end
-      end
-    end
-  end
+  # def submit_require
+  #   survey.questions.each do |q|
+  #     if q.required
+  #       if q.answers.count > 0
+  #         q.answers.each do |a|
+  #           if a.answer_text.blank?
+  #             errors.add(:required, "ERROR: triggered by blank answer text")
+  #           end
+  #         end
+  #       # else
+  #       #   errors.add(:required, "ERROR: triggered by question answers not being > 0")
+  #       end
+  #     end
+  #   end
+  # end
 
     # survey.questions.each do |q|
     #   if q.required

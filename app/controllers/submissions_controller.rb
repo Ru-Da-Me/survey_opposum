@@ -15,7 +15,7 @@ class SubmissionsController < ApplicationController
   def new
     @submission = Submission.new(survey_id: params[:survey_id])
     @survey = Survey.find(params[:survey_id])
-    questions = Question.where(survey_id: @survey.id)#.order(:order_number)
+    questions = Question.where(survey_id: @survey.id)
     questions.each do |q|
       @submission.answers.build(question: q)
     end
@@ -57,6 +57,6 @@ class SubmissionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def submission_params
       params.require(:submission).permit(:survey_id,
-      answers_attributes:[:question_id, :submission_id, :answer_text])
+      answers_attributes:[:id, :question_id, :submission_id, :answer_text])
     end
 end

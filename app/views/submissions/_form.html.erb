@@ -13,41 +13,35 @@
       </div>
     <% end %>
 
-    <h3><%= @submission.survey.title %></h3>
-    <h3><%= @submission.survey.description %></h3>
-
-    <%= f.hidden_field :survey_id %>
-
-    <% @submission.survey.questions.each do |q| %>
-          <h2><%= "Question" %>
-          <h3><%= q.text%></h3>
-          <h4><%= q.description %></h4>
-          <% if q.required %>
-            <p><%= "required" %></p>
-          <% else %>
-            <p><%= "optional" %></p>
-          <% end %>
-        <%= f.fields_for :answers do |ff| %>
-          <% if q.question_type == "Yes/No"%>
-            <div class="field">
-              <br><%= ff.label :answer_text, "Yes" %> Yes
-              <br><%= ff.check_box "answer_text[#{q.id}]", "No" %> No
-            </div>
-          <%elsif q.question_type == "Short"%>
-            <div class="field">
-              <%= ff.label :answer_text %><br>
-              <%= ff.text_field "answer_text[#{q.id}]" %>
-            </div>
-          <%else q.question_type == "Long"%>
-            <div class="field">
-              <%= ff.label :answer_text %><br>
-              <%= ff.text_area "answer_text[#{q.id}]" %>
-            </div>
-          <% end %>
-        <% end %>
-    <%end%>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
-</div>
+    <%= f.fields_for(:answers) do |ff| %>
+       <% q = ff.object.question %>
+       <%= ff.hidden_field :question_id, value: q.id %>
+       <%= q.text %>
+       <% if q.required == true %>
+         <div> (Required) </div>
+       <% else %>
+         <div> (Optional) </div>
+       <% end %>
+       <% if q.question_type == "Yes/No" %>
+         <div class="field">
+           <%= ff.label :answer_text, 'Yes' %>
+           <%= ff.radio_button :answer_text, 'Yes'%>
+           <%= ff.label :answer_text, 'No' %>
+           <%= ff.radio_button :answer_text, 'No'%><br
+         </div>
+       <% elsif q.question_type == "Short" %>
+         <div class="field">
+           <%= ff.label :answer_text %><br>
+           <%= ff.text_field :answer_text %>
+         </div>
+       <% elsif q.question_type == "Long" %>
+         <div class="field">
+           <%= ff.label :answer_text %><br>
+           <%= ff.text_area :answer_text %>
+         </div>
+       <% end %>
+     <% end %>
+     <div class="actions">
+       <%= f.submit "Submit Survey", class: "submit-button" %>
+     </div>
+   <% end %>

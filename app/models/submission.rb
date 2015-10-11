@@ -4,7 +4,7 @@ class Submission < ActiveRecord::Base
   has_many :questions, through: :answers
   # validate :submit_require
   validates :survey_id, presence: true
-  accepts_nested_attributes_for :answers
+  accepts_nested_attributes_for :answers, reject_if: :all_blank
 
   # def submit_require
   #

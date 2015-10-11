@@ -15,15 +15,16 @@ class SubmissionsController < ApplicationController
   def new
     @submission = Submission.new(survey_id: params[:survey_id])
     @survey = Survey.find(params[:survey_id])
-  #  You need to build one answer for the new submission FOR EACH question.
-  #  And give each new answer a question_id of the corresponding question
-  # @submission.answers.build
-
+    questions = Question.where(survey_id: @survey.id)#.order(:order_number)
+    questions.each do |q|
+      @submission.answers.build(question: q)
+    end
   end
 
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
+    #@submission.answers.build (for each (loop??) answer in a submission form and pass it the question_id associated with it)
 
     if @submission.save
       redirect_to @submission, notice: 'Submission was successfully created.'

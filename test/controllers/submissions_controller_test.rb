@@ -29,16 +29,6 @@ class SubmissionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @submission
-    assert_response :success
-  end
-
-  test "should update submission" do
-    patch :update, id: @submission, submission: { survey_id: @submission.survey_id }
-    assert_redirected_to submission_path(assigns(:submission))
-  end
-
   test "should destroy submission" do
     assert_difference('Submission.count', -1) do
       delete :destroy, id: @submission

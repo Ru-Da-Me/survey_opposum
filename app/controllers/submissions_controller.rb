@@ -15,6 +15,10 @@ class SubmissionsController < ApplicationController
   def new
     @submission = Submission.new(survey_id: params[:survey_id])
     @survey = Survey.find(params[:survey_id])
+  #  You need to build one answer for the new submission FOR EACH question.
+  #  And give each new answer a question_id of the corresponding question
+  # @submission.answers.build
+
   end
 
   # POST /submissions

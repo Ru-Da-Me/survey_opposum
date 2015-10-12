@@ -13,6 +13,8 @@
       </div>
     <% end %>
 
+    <%= f.hidden_field :survey_id%>
+
     <%= f.fields_for(:answers) do |ff| %>
        <% q = ff.object.question %>
        <%= ff.hidden_field :question_id%>

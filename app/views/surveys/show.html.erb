@@ -64,6 +64,7 @@
       <p><%= link_to 'Destroy', @survey, method: :delete, data: { confirm: 'Are you sure?' } %></p>
     </div>
   </div>
+  <% end %>  
 
   <h3>URL to send out</h3>
   <p><%= new_submission_url(/\W?survey_id=#{@survey.id}/) %></p>

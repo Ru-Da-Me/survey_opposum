@@ -15,13 +15,13 @@
 
     <%= f.fields_for(:answers) do |ff| %>
        <% q = ff.object.question %>
-       <%= ff.hidden_field :question_id, value: q.id %>
+       <%= ff.hidden_field :question_id%>
        <h3><%= q.text %></h3>
        <p><%= q.description %></p>
        <% if q.required == true %>
-         <div> <p>(Required)</p> </div>
+         <div> <p>* required</p> </div>
        <% else %>
-         <div> <p>(Optional)</p> </div>
+         <div> <p>(optional)</p> </div>
        <% end %>
        <% if q.question_type == "Yes/No" %>
          <div class="field">

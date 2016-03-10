@@ -29,6 +29,7 @@ gem 'rails-footnotes', '~> 4.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem "administrate", "~> 0.1.4"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

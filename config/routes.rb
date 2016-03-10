@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :answers
+resources :authors
+resources :questions
+resources :submissions
+resources :surveys
+
+    root to: "answers#index"
+  end
+
   resources :submissions
   resources :answers
   root 'authors#new'
